@@ -10,8 +10,21 @@ class bubbleteashope extends ChangeNotifier {
         ImagePage: 'assets/image/1.png'),
     Drink(
         name: ' Smoothie Milk',
-        price: '5.00',
+        price: '3.00',
         ImagePage: 'assets/image/blub2.png'),
+    Drink(name: 'Moxito', price: '5.00', ImagePage: 'assets/image/mox.png'),
+    Drink(
+        name: 'Cocktail with Oreo',
+        price: '5.00',
+        ImagePage: 'assets/image/koktels.png'),
+    Drink(
+        name: 'Affogato(Late)',
+        price: '5.00',
+        ImagePage: 'assets/image/late.png'),
+    Drink(
+        name: ' Eggnog Frappé ',
+        price: '5.00',
+        ImagePage: 'assets/image/coctail.png'),
   ];
 
   final List<Drink> _userCart = [];

@@ -5,19 +5,18 @@ import 'package:provider/provider.dart';
 import '../model/drink.dart';
 import '../model/shope.dart';
 
-class OrderPage extends StatefulWidget {
-  final Drink drink;
-
-  const OrderPage({
+class OrderPage1 extends StatefulWidget {
+  final Salat salat;
+  const OrderPage1({
     super.key,
-    required this.drink,
+    required this.salat,
   });
 
   @override
-  State<OrderPage> createState() => _OrderPageState();
+  State<OrderPage1> createState() => _OrderPageState();
 }
 
-class _OrderPageState extends State<OrderPage> {
+class _OrderPageState extends State<OrderPage1> {
   //sweet custom
   double sweetValue = 0.0;
   void customizeSweet(double newValue) {
@@ -42,7 +41,8 @@ class _OrderPageState extends State<OrderPage> {
 
   //add card
   void addCard() {
-    Provider.of<bubbleteashope>(context, listen: false).addToCart(widget.drink);
+    Provider.of<bubbleteashope>(context, listen: false)
+        .addToCart(widget.salat as Drink);
     Navigator.pop(context);
     //ответ на нажатий кнопки
     showDialog(
@@ -57,7 +57,7 @@ class _OrderPageState extends State<OrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.drink.name),
+        title: Text(widget.salat.name),
       ),
       backgroundColor: Colors.brown[200],
       body: Padding(
@@ -65,7 +65,7 @@ class _OrderPageState extends State<OrderPage> {
         child: Column(
           children: [
             //drink image
-            Image.asset(widget.drink.ImagePage),
+            Image.asset(widget.salat.ImagePage),
             //sliders to customize drink
             Column(
               children: [

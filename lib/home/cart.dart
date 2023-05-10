@@ -1,3 +1,4 @@
+import 'package:blubble_tea_shope/model/salt.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 import '../components/drink_title.dart';
+import '../components/salat_title.dart';
 import '../model/drink.dart';
 import '../model/shope.dart';
 
@@ -43,6 +45,16 @@ class _CartPageState extends State<CartPage> {
                             return DrinkTitle(
                                 drink: drink,
                                 onTap: () => removeFromCart(drink),
+                                trailing: const Icon(Icons.delete));
+                          })),
+                  Expanded(
+                      child: ListView.builder(
+                          itemCount: value.cart.length,
+                          itemBuilder: (context, index) {
+                            Salat salat = value.cart[index] as Salat;
+                            return SalatTitle(
+                                salat: salat,
+                                onTap: () => removeFromCart(salat as Drink),
                                 trailing: const Icon(Icons.delete));
                           })),
                   MaterialButton(

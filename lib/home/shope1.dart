@@ -1,4 +1,5 @@
 import 'package:blubble_tea_shope/home/order.dart';
+import 'package:blubble_tea_shope/model/drink.dart';
 import 'package:blubble_tea_shope/model/salt.dart';
 import 'package:blubble_tea_shope/model/shope.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,34 +8,33 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
-import '../components/drink_title.dart';
-import '../model/drink.dart';
+import '../components/salat_title.dart';
+import '../model/shope2.dart';
+import 'order1.dart';
 
-class ShopePage extends StatefulWidget {
-  const ShopePage({super.key});
+class ShopePage1 extends StatefulWidget {
+  const ShopePage1({super.key});
 
   @override
-  State<ShopePage> createState() => _ShopePageState();
+  State<ShopePage1> createState() => _ShopePage1State();
 }
 
-class _ShopePageState extends State<ShopePage> {
+class _ShopePage1State extends State<ShopePage1> {
 //user go to order page
-  void goToOrderPage(
-    Drink drink,
-  ) {
+  void goToOrderPage(Salat salat) {
     //navigarot
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => OrderPage(
-            drink: drink,
+          builder: (context) => OrderPage1(
+            salat: salat,
           ),
         ));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<bubbleteashope>(
+    return Consumer<SalatShope>(
       builder: (context, value, child) => SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -51,16 +51,13 @@ class _ShopePageState extends State<ShopePage> {
                   child: ListView.builder(
                       itemCount: value.shope.length,
                       itemBuilder: (context, index) {
-                        Drink individualDrink = value.shope[index];
-//SalatTitle(onTap: () => goToOrderPage(individualDrink), trailing: const Icon(Icons.arrow_forward_ios_sharp), salat: individualSalat,)
-                        return DrinkTitle(
-                          drink: individualDrink,
+                        Salat individualSalat = value.shope[index];
+                        return SalatTitle(
+                          salat: individualSalat,
                           trailing: Icon(Icons.arrow_forward_ios_sharp),
-                          onTap: () => goToOrderPage(
-                            individualDrink,
-                          ),
+                          onTap: () => goToOrderPage(individualSalat),
                         );
-                      })),
+                      }))
             ],
           ),
         ),
