@@ -22,6 +22,11 @@ class _CartPageState extends State<CartPage> {
     Provider.of<bubbleteashope>(context, listen: false).removeFromCart(drink);
   }
 
+  void removeFromCart1(Salat salat) {
+    Provider.of<bubbleteashope>(context, listen: false)
+        .removeFromCartSalat(salat);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<bubbleteashope>(
@@ -41,21 +46,19 @@ class _CartPageState extends State<CartPage> {
                       child: ListView.builder(
                           itemCount: value.cart.length,
                           itemBuilder: (context, index) {
-                            Drink drink = value.cart[index];
-                            return DrinkTitle(
-                                drink: drink,
-                                onTap: () => removeFromCart(drink),
-                                trailing: const Icon(Icons.delete));
-                          })),
-                  Expanded(
-                      child: ListView.builder(
-                          itemCount: value.cart.length,
-                          itemBuilder: (context, index) {
-                            Salat salat = value.cart[index] as Salat;
-                            return SalatTitle(
-                                salat: salat,
-                                onTap: () => removeFromCart(salat as Drink),
-                                trailing: const Icon(Icons.delete));
+                            if (value.cart[index] is Drink) {
+                              Drink drink = value.cart[index];
+                              return DrinkTitle(
+                                  drink: drink,
+                                  onTap: () => removeFromCart(drink),
+                                  trailing: const Icon(Icons.delete));
+                            } else {
+                              Salat salat = value.cart[index];
+                              return SalatTitle(
+                                  salat: salat,
+                                  onTap: () => removeFromCart1(salat),
+                                  trailing: const Icon(Icons.delete));
+                            }
                           })),
                   MaterialButton(
                       child: const Text("Pay"),

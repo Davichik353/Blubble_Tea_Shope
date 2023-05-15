@@ -34,7 +34,7 @@ class _ShopePage1State extends State<ShopePage1> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SalatShope>(
+    return Consumer<bubbleteashope>(
       builder: (context, value, child) => SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -49,9 +49,9 @@ class _ShopePage1State extends State<ShopePage1> {
               ),
               Expanded(
                   child: ListView.builder(
-                      itemCount: value.shope.length,
+                      itemCount: value.shope2.length,
                       itemBuilder: (context, index) {
-                        Salat individualSalat = value.shope[index];
+                        Salat individualSalat = value.shope2[index];
                         return SalatTitle(
                           salat: individualSalat,
                           trailing: Icon(Icons.arrow_forward_ios_sharp),

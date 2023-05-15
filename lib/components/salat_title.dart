@@ -10,7 +10,7 @@ class SalatTitle extends StatelessWidget {
       {super.key,
       required this.salat,
       required this.trailing,
-      required void Function() onTap});
+      required void Function() this.onTap});
   final Salat salat;
   final Widget trailing;
   void Function()? onTap;

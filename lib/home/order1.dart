@@ -42,7 +42,7 @@ class _OrderPageState extends State<OrderPage1> {
   //add card
   void addCard() {
     Provider.of<bubbleteashope>(context, listen: false)
-        .addToCart(widget.salat as Drink);
+        .addToCartSalat(widget.salat);
     Navigator.pop(context);
     //ответ на нажатий кнопки
     showDialog(
@@ -66,54 +66,20 @@ class _OrderPageState extends State<OrderPage1> {
           children: [
             //drink image
             Image.asset(widget.salat.ImagePage),
-            //sliders to customize drink
-            Column(
+            Row(
               children: [
-                // sweetness slider
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(width: 100, child: Text('Sweet')),
-                    Expanded(
-                      child: Slider(
-                          value: sweetValue,
-                          label: sweetValue.toString(),
-                          divisions: 4,
-                          onChanged: (value) => customizeSweet(value)),
-                    )
-                  ],
+                SizedBox(
+                  width: 80,
                 ),
-
-                //ice slider
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(width: 100, child: Text('Ice')),
-                    Expanded(
-                      child: Slider(
-                          value: iceValue,
-                          label: iceValue.toString(),
-                          divisions: 4,
-                          onChanged: (value) => customizeIce(value)),
-                    )
-                  ],
-                ),
-                //pearls slider
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(width: 100, child: Text('Volume')),
-                    Expanded(
-                      child: Slider(
-                          value: pwarlsValue,
-                          label: pwarlsValue.toString(),
-                          divisions: 4,
-                          onChanged: (value) => customizePwarls(value)),
-                    )
-                  ],
-                ),
+                Text('How much'),
+                Text('  do I need?')
               ],
             ),
+            Slider(
+                value: sweetValue,
+                label: sweetValue.toString(),
+                divisions: 10,
+                onChanged: (value) => customizeSweet(value)),
             //add to cart button
             MaterialButton(
                 child: Text('Add to Cart'),

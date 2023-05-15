@@ -20,7 +20,7 @@ class MyBottomBar extends StatelessWidget {
         tabActiveBorder: Border.all(color: Colors.white),
         tabs: [
           GButton(icon: Icons.home, text: 'Home'),
-          GButton(icon: Icons.home, text: 'Home'),
+          GButton(icon: Icons.face_3, text: 'Home'),
           GButton(
             icon: Icons.shopping_bag,
             text: 'Cart',
